@@ -20,18 +20,18 @@ public class UserController {
         this.userService = userService;
     }
 
-    // показать всех пользователей
+
     @GetMapping
     public String list(Model model) {
         model.addAttribute("users", userService.getAll());
-        return "users/list"; // /WEB-INF/views/users/list.jsp
+        return "users/list";
     }
 
-    // форма добавления / редактирования
+
     @GetMapping("/form")
     public String form(@RequestParam(value = "id", required = false) Long id, Model model) {
         model.addAttribute("user", id == null ? new User() : userService.get(id));
-        return "users/form"; // /WEB-INF/views/users/form.jsp
+        return "users/form";
     }
 
     @PostMapping("/save")
